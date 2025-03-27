@@ -1,0 +1,27 @@
+{
+  "name": "local-n8n-server-2",
+  "version": "1.0.0",
+  "description": "Duplicate n8n server setup",
+  "main": "index.js",
+  "scripts": {
+    "start": "n8n start",
+    "server": "./n8n.sh start",
+    "dev": "n8n start --tunnel",
+    "start-with-tunnel": "n8n start --tunnel",
+    "install-n8n": "npm install n8n",
+    "reset-data": "./scripts/reset.sh",
+    "backup": "./scripts/backup.sh",
+    "clean-rebuild": "./scripts/clean-rebuild.sh",
+    "nodes": "./scripts/list-custom-nodes.sh",
+    "nodes:list": "./scripts/list-custom-nodes.sh list",
+    "nodes:add": "./scripts/list-custom-nodes.sh add",
+    "nodes:remove": "./scripts/list-custom-nodes.sh remove",
+    "nodes:link": "./scripts/list-custom-nodes.sh link"
+  },
+  "keywords": ["n8n", "workflow", "automation"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "n8n": "^1.31.1"
+  }
+}

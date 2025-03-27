@@ -1,0 +1,17 @@
+# Node modules
+node_modules/
+
+# n8n data and cache
+.n8n/
+.cache/
+
+# Environment variables
+# .env
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor files
+.vscode/
+.DS_Store
