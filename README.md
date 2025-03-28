@@ -1,49 +1,46 @@
-# local-n8n-server-2
+# Local n8n Server 2
 
-A duplicate n8n server setup running on port 5679.
+This is a secondary local development instance of n8n. 
 
-## Quick Start
+## Available Scripts
 
-1. Initialize the server:
-   ```
-   ./n8n.sh init
-   ```
+| Script | Description | Command |
+|--------|-------------|---------|
+| `start_n8n.sh` | Start the n8n server | `npm run server` |
+| `start_tunnel.sh` | Start with tunnel access | `npm run tunnel` |
+| `dump-data.sh` | Reset n8n data (with backup) | `npm run dump-data` |
+| `clean-start.sh` | Clean cache and restart | `npm run clean-start` |
+| `manage-nodes.sh` | Manage custom nodes | See below |
 
-2. Start the server:
-   ```
-   npm run server
-   ```
-   or
-   ```
-   ./n8n.sh start
-   ```
+## Managing Custom Nodes
 
-3. Access the n8n interface at: http://localhost:5679
+The `manage-nodes.sh` script provides commands for working with custom nodes:
 
-## Available Commands
+```bash
+# List all custom nodes linked to this server
+npm run nodes
 
-- `./n8n.sh start` - Start the n8n server
-- `./n8n.sh tunnel` - Start with tunnel access
-- `./n8n.sh backup` - Backup n8n data
-- `./n8n.sh reset` - Reset n8n data
-- `./n8n.sh clean` - Clean cache and rebuild
-- `./n8n.sh init` - Initialize setup
+# Link a custom node to this server
+npm run nodes:link -- /path/to/custom-node
 
-## NPM Scripts
+# Unlink a custom node from this server
+npm run nodes:unlink -- /path/to/custom-node
 
-- `npm run start`: Start the n8n server directly
-- `npm run server`: Start the n8n server using the wrapper script (same as `./n8n.sh start`)
-- `npm run dev`: Start with tunnel access
-- `npm run start-with-tunnel`: Same as above
-- `npm run install-n8n`: Install n8n
-- `npm run reset-data`: Reset all n8n data
-- `npm run backup`: Backup n8n data
-- `npm run clean-rebuild`: Run clean rebuild script
+# Check link status of a custom node
+npm run nodes:check -- /path/to/custom-node
+```
 
-## Custom Nodes
+## Advanced Options
 
-To manage custom nodes:
-- `npm run nodes:list` - List all configured custom nodes
-- `npm run nodes:add <node-name>` - Add a custom node to configuration
-- `npm run nodes:remove <node-name>` - Remove a custom node from configuration
-- `npm run nodes:link <path-to-node-dir>` - Link a local node directory and add to configuration
+You can use additional options with some scripts:
+
+```bash
+# Reset without confirmation prompt
+./scripts/dump-data.sh --force
+
+# Perform a full clean install (removes node_modules)
+./scripts/clean-start.sh --full
+
+# Skip confirmation in clean-start
+./scripts/clean-start.sh --force
+```
