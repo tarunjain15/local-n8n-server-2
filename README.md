@@ -1,46 +1,52 @@
-# Local n8n Server 2
+# Local N8N Server 2
 
-This is a secondary local development instance of n8n. 
+This is a secondary n8n workflow automation server.
 
-## Available Scripts
-
-| Script | Description | Command |
-|--------|-------------|---------|
-| `start_n8n.sh` | Start the n8n server | `npm run server` |
-| `start_tunnel.sh` | Start with tunnel access | `npm run tunnel` |
-| `dump-data.sh` | Reset n8n data (with backup) | `npm run dump-data` |
-| `clean-start.sh` | Clean cache and restart | `npm run clean-start` |
-| `manage-nodes.sh` | Manage custom nodes | See below |
-
-## Managing Custom Nodes
-
-The `manage-nodes.sh` script provides commands for working with custom nodes:
+## Quick Start
 
 ```bash
-# List all custom nodes linked to this server
-npm run nodes
+# Start the server
+npm run start
 
-# Link a custom node to this server
-npm run nodes:link -- /path/to/custom-node
+# Clean cache and start fresh
+npm run rub-slate
 
-# Unlink a custom node from this server
-npm run nodes:unlink -- /path/to/custom-node
-
-# Check link status of a custom node
-npm run nodes:check -- /path/to/custom-node
+# Completely reset server and start fresh
+npm run new-slate
 ```
 
-## Advanced Options
+## Available Commands
 
-You can use additional options with some scripts:
+| Command | Description |
+|---------|-------------|
+| `npm run start` | Start the n8n server |
+| `npm run rub-slate` | Clean cache and start fresh |
+| `npm run new-slate` | Reset server data with backup and start fresh |
+| `npm run dev` | Start n8n in development mode |
+| `npm run nodes` | List installed custom nodes |
+| `npm run nodes:install <package>` | Install custom nodes from NPM or Git |
+| `npm run nodes:uninstall <n>` | Uninstall custom nodes |
+| `npm run dev-nodes` | Manage custom node development |
+| `npm run info` | Show server information |
+| `npm run health` | Check server health |
+| `npm run quality` | Run quality checks |
+| `npm run backup` | Create a backup of workflows and data |
+| `npm run version` | Check compatibility between components |
+
+## All N8N Server Operations
+
+You can also use the scripts directly from the `n8n-local-server-tools` directory:
 
 ```bash
-# Reset without confirmation prompt
-./scripts/dump-data.sh --force
+# Start all servers
+cd ../n8n-local-server-tools
+./start.sh all
 
-# Perform a full clean install (removes node_modules)
-./scripts/clean-start.sh --full
+# Clean and start all servers
+./rub-slate-and-start.sh all
 
-# Skip confirmation in clean-start
-./scripts/clean-start.sh --force
+# Reset and start all servers
+./new-slate-start.sh all
 ```
+
+See the main tools directory for more detailed documentation.

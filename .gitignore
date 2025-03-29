@@ -5,8 +5,13 @@ node_modules/
 .n8n/
 .cache/
 
+# Backups
+backups/
+
 # Environment variables
-# .env
+.env
+.env.local
+.env.*.local
 
 # Logs
 *.log
