@@ -1,11 +1,7 @@
 #!/bin/bash
 
-# Simple wrapper around the common start.sh script
-# Automatically passes the server directory
+# Updated start script that uses the new robust start-n8n.sh script
+# instead of calling the common script directly
 
-# Get the server directory (where this script's parent directory is located)
 SERVER_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
-COMMON_DIR="$SERVER_DIR/../n8n-local-server-tools"
-
-# Call the common script with the server directory
-"$COMMON_DIR/start.sh" "$SERVER_DIR"
+"$SERVER_DIR/start-n8n.sh"
